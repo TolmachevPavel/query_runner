@@ -1,0 +1,22 @@
+#! /usr/bin/gnuplot -persist
+set y2tics
+set ytics nomirror
+set ylabel 'PlanTime'
+set y2label 'ExecTime'
+set key top left
+set term jpeg
+set title "Planning and Execution time"
+set terminal jpeg size 1400, 1000
+set output "PE_Time.jpeg"
+set grid
+set xtics 10
+set ytics 10
+set xrange [1:113]
+
+set style fill transparent solid 0.35 border
+set style line 1 lt 1 lw 2 pt 1 ps 1 lc rgb "red"
+set style line 2 lt 1 lw 1 pt 1 ps 1 lc rgb "navy"
+
+plot "PlanTime" title "PlanTime" axes x1y1 with filledcurve ls 2, "ExecTime"  title "ExecTime" axes x1y2  with filledcurve ls 1;
+#Только линии
+#plot "itogP" u ($0+1):1 title "PlanTime" axes x1y1 with l, "itogE" u ($0+1):1 title "ExecTime" axes x1y2  with l;
