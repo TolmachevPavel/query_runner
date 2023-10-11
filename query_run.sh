@@ -1,6 +1,6 @@
 #!/bin/bash
 #название директории где лежат запросы (для удобства, можно другой каталог с запросами подставить)
-job_dir="join-order-benchmark"
+job_dir="join-order-benchmark2"
 
 #Очистка прошлых результатов
 rm -rf results/*
@@ -25,4 +25,6 @@ echo 0 >> PlanTime
 echo 0 >> ExecTime
 
 #Запускаю скрипт построения графика. Результат сохраняется в файл PE_Time.jpeg
-gnuplot -e "load 'gn_graph.gpi'"
+#gnuplot -e "load 'gn_graph.gpi'"
+#echo $(awk 'END {print NR}' ExecTime)
+gnuplot -c gn_graph.gpi $(awk 'END {print NR}' ExecTime)
